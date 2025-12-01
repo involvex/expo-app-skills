@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-repo_directory="$(cd "$(dirname "$0")/../.." && pwd)"
+repo_directory="$(cd -P "$(dirname "$0")/../.." && pwd)"
 cd "$repo_directory"
 
 # Parse arguments
