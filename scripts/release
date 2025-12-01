@@ -1,0 +1,47 @@
+#!/bin/bash
+set -euo pipefail
+
+# Verify we're in a git repo with an origin remote
+if ! git remote get-url origin >/dev/null 2>&1; then
+  echo 'Error: Not in a git repository with an "origin" remote.'
+  exit 1
+fi
+
+# Fetch latest from origin
+echo "Fetching latest from origin..."
+git fetch origin main stable
+
+# Check if stable can fast-forward to main
+if ! git merge-base --is-ancestor origin/stable origin/main; then
+  echo "Error: origin/stable has diverged from origin/main."
+  echo ""
+  echo "The stable branch contains commits that are not in main."
+  echo "This should never happen. Manual intervention is required."
+  exit 1
+fi
+
+# Check if there's anything to release
+if [[ "$(git rev-parse origin/stable)" == "$(git rev-parse origin/main)" ]]; then
+  echo "Nothing to release: origin/stable is already at origin/main."
+  exit 0
+fi
+
+# Show what will be released
+echo ""
+echo "Commits to release:"
+git log --oneline origin/stable..origin/main
+echo ""
+
+# Prompt for confirmation
+read -p "Push these commits to stable? [y/N] " -r
+echo ""
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  echo "Aborted."
+  exit 1
+fi
+
+# Push main to stable
+git push origin origin/main:stable
+
+echo ""
+echo "Released to stable branch."
