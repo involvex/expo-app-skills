@@ -1,6 +1,6 @@
 ---
 name: Update Expo Skills
-description: Updates the Expo skills. Updates the clone of expo/skills to the latest version and reinstalls skills. Supports switching between stable and main branches.
+description: Updates the Expo skills installed on your computer. Supports switching between stable and main release branches.
 allowed-tools: "Bash({baseDir}/scripts/update.sh:*)"
 version: 1.0.0
 license: MIT License
