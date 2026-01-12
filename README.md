@@ -1,3 +1,7 @@
+> [!IMPORTANT]  
+> This repo has been superseded by [expo/claude-code-plugins](https://github.com/expo/claude-code-plugins).
+
+
 # Expo Agent Skills
 
 This repository contains a collection of AI agent skills for Expo developers.
