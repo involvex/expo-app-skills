@@ -13,6 +13,16 @@ license: MIT
 - ./references/expo-av-to-audio.md -- Migrate audio playback and recording from expo-av to expo-audio
 - ./references/expo-av-to-video.md -- Migrate video playback from expo-av to expo-video
 
+## Beta/Preview Releases
+
+Beta versions use `.preview` suffix (e.g., `55.0.0-preview.2`), published under `@next` tag.
+
+Check if latest is beta: https://exp.host/--/api/v2/versions (look for `-preview` in `expoVersion`)
+
+```bash
+npx expo install expo@next --fix  # install beta
+```
+
 ## Step-by-Step Upgrade Process
 
 1. Upgrade Expo and dependencies
@@ -79,6 +89,17 @@ This regenerates the `ios` and `android` directories. Ensure the project is not 
 
 When migrating deprecated packages, update all code usage before removing the old package. For expo-av, consult the migration references to convert Audio.Sound to useAudioPlayer, Audio.Recording to useAudioRecorder, and Video components to VideoView with useVideoPlayer.
 
+## expo.install.exclude
+
+Check if package.json has excluded packages:
+
+```json
+{
+  "expo": { "install": { "exclude": ["react-native-reanimated"] } }
+}
+```
+
+Exclusions are often workarounds that may no longer be needed after upgrading. Review each one.
 ## Removing patches
 
 Check if there are any outdated patches in the `patches/` directory. Remove them if they are no longer needed.
