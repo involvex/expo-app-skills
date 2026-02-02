@@ -17,7 +17,7 @@ references/
   controls.md            Native iOS: Switch, Slider, SegmentedControl, DateTimePicker, Picker
   form-sheet.md          Form sheets with footers via Stack and react-native-screens
   gradients.md           CSS gradients via experimental_backgroundImage (New Arch only)
-  icons.md               SF Symbols with expo-symbols, names, animations, weights
+  icons.md               SF Symbols via expo-image (sf: source), names, animations, weights
   media.md               Camera, audio, video, and file saving
   route-structure.md     Route conventions, dynamic routes, groups, folder organization
   search.md              Search bar with headers, useSearch hook, filtering patterns
@@ -26,6 +26,7 @@ references/
   toolbar-and-headers.md Stack headers and toolbar buttons, menus, search (iOS only)
   visual-effects.md      Blur (expo-blur) and liquid glass (expo-glass-effect)
   webgpu-three.md        3D graphics, games, GPU visualizations with WebGPU and Three.js
+  zoom-transitions.md    Apple Zoom: fluid zoom transitions with Link.AppleZoom (iOS 18+)
 ```
 
 ## Running the App
@@ -81,7 +82,7 @@ See `./references/route-structure.md` for detailed route conventions.
 - Never use legacy expo-permissions
 - `expo-audio` not `expo-av`
 - `expo-video` not `expo-av`
-- `expo-symbols` not `@expo/vector-icons`
+- `expo-image` with `source="sf:name"` for SF Symbols, not `expo-symbols` or `@expo/vector-icons`
 - `react-native-safe-area-context` not react-native SafeAreaView
 - `process.env.EXPO_OS` not `Platform.OS`
 - `React.use` not `React.useContext`
